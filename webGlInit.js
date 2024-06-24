@@ -71,6 +71,7 @@ function webGLStart() {
 	document.onkeyup = handleKeyUp;
 
 	tick();
+	
 }
 	
 function initGL(canvas) {
