@@ -1,4 +1,3 @@
- 
 var gl;
 var shaderProgram;
 
@@ -11,6 +10,10 @@ var bufferIndex;
 var maxBuffer;
 var canvas;
 			
+
+var deltaMax = 60;
+var lastTime = 0;
+
 function setMatrixUniforms() {
 	gl.uniformMatrix4fv(shaderProgram.projectionMatrixUniform, false, projectionMatrix);
 	gl.uniformMatrix4fv(shaderProgram.viewMatrixUniform, false, viewMatrix);
@@ -31,8 +34,6 @@ function doTouch(event) {
 }
 
 function webGLStart() {
-
-
 	document.body.onmousedown = function(event) { 
 		if (mouseDown < 4)
 		{
@@ -71,7 +72,6 @@ function webGLStart() {
 	document.onkeyup = handleKeyUp;
 
 	tick();
-	
 }
 	
 function initGL(canvas) {
@@ -162,8 +162,6 @@ function tick() {
 	drawScene();
 }				
 			
-var deltaMax = 60;
-var lastTime = 0;
 function stepFrame() {
 	var timeNow = new Date().getTime();
 	if (lastTime != 0) {
@@ -262,8 +260,6 @@ function handleKeyUp(event) {
 	currentlyPressedKeys[event.keyCode] = false;
 }
 
-
-
 var cameraX = 2500;
 var cameraY = 2500;
 var cameraZ = 600;
@@ -273,7 +269,6 @@ var lookY = 0;
 var lookZ = 0;
 
 function drawScene() {
-	
 	canvas.width  = window.innerWidth;
 	canvas.height = window.innerHeight;
 	gl.viewportWidth = canvas.width;
@@ -303,7 +298,10 @@ function drawScene() {
 	setMatrixUniforms();
 	gl.drawArrays(gl.LINES, 0, bufferIndex * 2);
 }
+
 var gameObjects = [];
+
 function addGameObject(newObject) {
 	gameObjects = gameObjects.concat(newObject);
 }
+
