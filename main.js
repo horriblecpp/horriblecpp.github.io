@@ -400,7 +400,7 @@ function updateStickMan(deltaTime) {
 
 								if (this.x > 3000) {
 									  this.x = 2600;
-									  window.location.href = "http://bgibbonsweb.github.io/"
+									  
 								}
 							}
 						}
